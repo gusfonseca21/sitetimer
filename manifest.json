@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "SiteTimer",
+  "version": "0.1",
+  "description": "Descrição da extensão.",
+  "permissions": ["storage", "activeTab", "scripting", "webNavigation"],
+  "background": {
+    "service_worker": "./src/js/background.js"
+  },
+  "action": {
+    "default_popup": "./src/popup.html",
+    "default_icon": {}
+  },
+  "host_permissions": ["<all_urls>"]
+}
