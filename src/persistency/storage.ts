@@ -4,7 +4,6 @@ export async function getStoredData() {
   try {
     return (await chrome.storage.local.get()) as StorageData;
   } catch (error) {
-    // console.error("Houve um erro ao tentar retornar os dados salvos: ", error);
     throw error;
   }
 }

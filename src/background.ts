@@ -1,5 +1,5 @@
 import getDomain from './helper/getDomain';
-import { getTimeSpent } from './helper/getTimeSpent';
+import getTimeSpent from './helper/getTimeSpent';
 import {
   checkDomainStored,
   checkHasFavIcon,
@@ -62,7 +62,6 @@ chrome.tabs.onUpdated.addListener(async (_tabId, changeInfo, tab) => {
 
 // ALTERANDO A ABA ATIVA
 chrome.tabs.onActivated.addListener((activeInfo) => {
-  console.log('activeInfo', activeInfo);
   chrome.tabs.get(activeInfo.tabId, (tab) => {
     const domain = getDomain(tab.url);
     if (domain) {
