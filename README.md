@@ -1,70 +1,54 @@
-# Chrome Extension TypeScript Starter
+# Sitetimer
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
 
-Chrome Extension, TypeScript and Visual Studio Code
+Extensão Chrome, TypeScript e Visual Studio Code
 
-## Prerequisites
+## Pré-requisitos
 
-* [node + npm](https://nodejs.org/) (Current Version)
+* [node + npm](https://nodejs.org/) (Versão Atual)
 
-## Option
+## Plugin Opcional para VSCode
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-## Includes the following
+## Instalação
+- Instale todas as dependências do projeto digitando o seguinte comando no terminal:
+  ```npm i```
+- Faça a build do projeto com o seguinte comando: ```npm run build```
+- Após o build a pasta dist será criada na raiz do projeto. Substitua todo o conteúdo do arquivo manifest.json pelo seguinte código em JSON:
+```{
+  "manifest_version": 3,
 
-* TypeScript
-* Webpack
-* React
-* Jest
-* Example Code
-    * Chrome Storage
-    * Options Version 2
-    * content script
-    * count up badge number
-    * background
+  "name": "SiteTimer",
+  "description": "",
+  "version": "1.0",
 
-## Project Structure
+  "options_ui": {
+    "page": "options.html"
+  },
 
-* src/typescript: TypeScript source files
-* src/assets: static files
-* dist: Chrome Extension directory
-* dist/js: Generated JavaScript files
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
 
-## Setup
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/vendor.js", "js/content_script.js"]
+    }
+  ],
 
-```
-npm install
-```
+  "background": {
+    "service_worker": "js/background.js"
+  },
 
-## Import as Visual Studio Code project
+  "permissions": ["storage", "tabs", "sessions", "activeTab"],
 
-...
-
-## Build
-
-```
-npm run build
-```
-
-## Build in watch mode
-
-### terminal
+  "host_permissions": ["<all_urls>"]
+}
 
 ```
-npm run watch
-```
 
-### Visual Studio Code
-
-Run watch mode.
-
-type `Ctrl + Shift + B`
-
-## Load extension to chrome
-
-Load `dist` directory
-
-## Test
-`npx jest` or `npm run test`
+-  No seu navegador, vá para a página de gerenciamento de extensões e faça a importação dos arquivos na pasta dist e ative a extensão.
+-  Navegue por diferentes sites e então verifique o tempo gasto nos domínios clicando no ícone da extensão que fica ao lado do input de endereço do navegador.
